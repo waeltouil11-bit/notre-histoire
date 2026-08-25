@@ -33,7 +33,7 @@ body, html {
   filter: brightness(1);
 }
 
-/* Style des prénom sur les points */
+/* Label des prénoms */
 .custom-name-label {
   background: rgba(255, 255, 255, 0.95);
   border: 1.5px solid #ff416c;
@@ -66,9 +66,9 @@ body, html {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1.5s ease, transform 1.5s ease;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   color: #1a1a2e;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.9);
 }
@@ -78,7 +78,8 @@ body, html {
   transform: translateY(0);
 }
 
-#next-btn {
+/* Boutons principaux */
+#next-btn, .suite-btn {
   pointer-events: auto;
   background: linear-gradient(45deg, #ff4b2b, #ff416c);
   color: white;
@@ -92,35 +93,150 @@ body, html {
   transition: transform 0.3s, opacity 1s;
 }
 
+.suite-btn {
+  margin-top: 25px;
+}
+
 #next-btn.hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-#next-btn:hover {
+#next-btn:hover, .suite-btn:hover {
   transform: scale(1.05);
 }
 
+/* Écran 2 - Poème réduit */
 .story-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
   background: #f8f9fa;
 }
 
 .story-container h2 {
-  font-size: 2rem;
-  margin-bottom: 25px;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
   color: #ff416c;
 }
 
 .final-poem {
-  max-width: 700px;
-  line-height: 1.8;
-  font-size: 1.15rem;
-  color: #2c3e50;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 0.95rem; /* Taille de police légèrement réduite */
+  color: #34495e;
+}
+
+/* Écran 3 - Cadenas */
+.lock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #111425;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.padlock-icon {
+  font-size: 80px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.padlock-icon:hover {
+  transform: scale(1.1);
+}
+
+.click-here-btn {
+  background: transparent;
+  border: 2px solid #ff416c;
+  color: #ff416c;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+
+.click-here-btn:hover {
+  background: #ff416c;
+  color: white;
+}
+
+.error-popup {
+  margin-top: 25px;
+  background: rgba(255, 65, 108, 0.15);
+  border: 1px solid #ff416c;
+  color: #ff6b81;
+  padding: 15px 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  animation: shake 0.4s ease-in-out;
+}
+
+.error-popup.hidden {
+  display: none;
+}
+
+/* Animation d'erreur */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+
+/* Avion & Fumée */
+.plane-icon {
+  position: absolute;
+  font-size: 45px;
+  top: 50%;
+  left: -60px;
+  z-index: 3000;
+  pointer-events: none;
+  display: none;
+  transform: translateY(-50%) rotate(15deg);
+}
+
+.smoke-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  z-index: 2000;
+  pointer-events: none;
+  transition: background 1.8s ease-in-out;
+}
+
+.smoke-overlay.active {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Message Final */
+.final-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #ffffff;
+}
+
+.love-message {
+  font-size: 2.8rem;
+  color: #ff416c;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 0 4px 20px rgba(255, 65, 108, 0.2);
 }
