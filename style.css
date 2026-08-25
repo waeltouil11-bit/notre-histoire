@@ -33,9 +33,26 @@ body, html {
   filter: brightness(1);
 }
 
+/* Style des prénom sur les points */
+.custom-name-label {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #ff416c;
+  color: #1a1a2e;
+  font-weight: bold;
+  font-size: 0.95rem;
+  padding: 5px 12px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  white-space: nowrap;
+}
+
+.leaflet-tooltip-top:before {
+  border-top-color: #ff416c;
+}
+
 .overlay-content {
   position: absolute;
-  bottom: 10%;
+  bottom: 8%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
