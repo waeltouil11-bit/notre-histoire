@@ -44,7 +44,6 @@ setTimeout(() => {
 
 }, 1000);
 
-// Cœur d'origine fluide et complet
 function drawHeartShape() {
   const leftHeartLine = L.polyline([], { color: '#ff1493', weight: 4, opacity: 0.95 }).addTo(map);
   const rightHeartLine = L.polyline([], { color: '#ff1493', weight: 4, opacity: 0.95 }).addTo(map);
