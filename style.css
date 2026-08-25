@@ -30,7 +30,6 @@ body, html {
 #map {
   width: 100%;
   height: 100%;
-  filter: brightness(1);
 }
 
 .custom-name-label {
@@ -43,10 +42,6 @@ body, html {
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   white-space: nowrap;
-}
-
-.leaflet-tooltip-top:before {
-  border-top-color: #ff416c;
 }
 
 .overlay-content {
@@ -69,7 +64,7 @@ body, html {
   font-weight: 600;
   margin-bottom: 10px;
   color: #1a1a2e;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
 }
 
 .text-fade.visible {
@@ -88,24 +83,46 @@ body, html {
   border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
-  transition: transform 0.3s, opacity 1s;
+  transition: transform 0.3s;
 }
 
-.suite-btn {
-  margin-top: 20px;
-}
+.suite-btn { margin-top: 20px; }
+#next-btn.hidden { opacity: 0; pointer-events: none; }
+#next-btn:hover, .suite-btn:hover { transform: scale(1.05); }
 
-#next-btn.hidden {
-  opacity: 0;
+/* ÉCRAN 2 : MOTIFS MIGNONS FLOATANTS */
+.cute-decorations {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
+  z-index: 1;
 }
 
-#next-btn:hover, .suite-btn:hover {
-  transform: scale(1.05);
+.decor {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 4s ease-in-out infinite alternate;
+  opacity: 0.8;
 }
 
-/* ÉCRAN 2 : POÈME COMPACT */
+.d1 { top: 10%; left: 8%; animation-delay: 0s; }
+.d2 { top: 15%; right: 10%; animation-delay: 0.5s; }
+.d3 { bottom: 12%; left: 12%; animation-delay: 1s; }
+.d4 { bottom: 18%; right: 8%; animation-delay: 1.5s; }
+.d5 { top: 45%; left: 4%; animation-delay: 0.8s; }
+.d6 { top: 50%; right: 5%; animation-delay: 1.2s; }
+.d7 { top: 80%; left: 45%; animation-delay: 0.3s; }
+.d8 { top: 5%; left: 48%; animation-delay: 1.7s; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(10deg); }
+}
+
 .story-container {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,69 +130,80 @@ body, html {
   height: 100%;
   padding: 20px;
   text-align: center;
-  background: #f8f9fa;
+  background: rgba(248, 249, 250, 0.85);
 }
 
-.story-container h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #ff416c;
-}
+.story-container h2 { font-size: 1.5rem; margin-bottom: 15px; color: #ff416c; }
+.final-poem { max-width: 550px; line-height: 1.5; font-size: 0.85rem !important; color: #34495e; }
 
-.final-poem {
-  max-width: 550px;
-  line-height: 1.5;
-  font-size: 0.85rem !important;
-  color: #34495e;
-}
-
-/* ÉCRAN 3 : PORTE VERROUILLÉE PAR DES CHAÎNES ET UN CADENAS */
+/* ÉCRAN 3 : PORTE ET CHAÎNES RÉALISTES */
 .lock-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: #111425;
+  background: #0f111a;
   color: white;
   padding: 20px;
-  text-align: center;
 }
 
-.door-lock-wrapper {
+.realistic-door-wrapper {
   position: relative;
-  display: inline-block;
+  width: 180px;
+  height: 280px;
   cursor: pointer;
   margin-bottom: 25px;
-  transition: transform 0.3s ease;
+  perspective: 1000px;
 }
 
-.door-lock-wrapper:hover {
-  transform: scale(1.08);
+.door-frame {
+  width: 100%;
+  height: 100%;
+  background: #2a1a08;
+  border: 6px solid #4a3319;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  position: relative;
+  display: flex;
 }
 
-.door-lock-wrapper .door {
-  font-size: 120px;
-  display: block;
+.door-panel {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, #3d2314, #52301c);
+  border: 1px solid #231209;
 }
 
-.door-lock-wrapper .chains {
+/* Chaînes Réalistes */
+.chain {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  width: 120%;
+  height: 16px;
+  background: repeating-linear-gradient(90deg, #8a8a8a 0px, #e0e0e0 6px, #4a4a4a 12px);
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.7);
+}
+
+.chain-1 { transform: translateY(-50%) rotate(-25deg); }
+.chain-2 { transform: translateY(-50%) rotate(25deg); }
+
+/* Cadenas Réaliste */
+.heavy-padlock {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-15deg);
-  font-size: 85px;
-  opacity: 0.9;
-  pointer-events: none;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.9));
+  animation: pulseLock 2s infinite alternate;
 }
 
-.door-lock-wrapper .lock {
-  position: absolute;
-  bottom: 20px;
-  right: 5px;
-  font-size: 50px;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
-  pointer-events: none;
+@keyframes pulseLock {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.08); }
 }
 
 .click-here-btn {
@@ -187,12 +215,6 @@ body, html {
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s, color 0.3s;
-}
-
-.click-here-btn:hover {
-  background: #ff416c;
-  color: white;
 }
 
 .error-popup {
@@ -204,13 +226,10 @@ body, html {
   border-radius: 12px;
   max-width: 380px;
   font-size: 0.85rem;
-  line-height: 1.4;
   animation: shake 0.4s ease-in-out;
 }
 
-.error-popup.hidden {
-  display: none;
-}
+.error-popup.hidden { display: none; }
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
@@ -218,62 +237,58 @@ body, html {
   40%, 80% { transform: translateX(10px); }
 }
 
-/* ÉCRAN 4 : AVION GÉANT & FUMÉE DE RÉACTEUR */
+/* ÉCRAN 4 : AVION ET FUMÉE RÉALISTES */
 .plane-wrapper {
   position: absolute;
-  top: 50%;
-  left: -400px;
-  transform: translateY(-50%);
+  top: 45%;
+  left: -250px;
   display: none;
   align-items: center;
   z-index: 3000;
   pointer-events: none;
 }
 
-.plane-icon {
-  font-size: 130px; /* Grand Avion */
-  transform: rotate(10deg);
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+.real-airplane {
+  transform: rotate(90deg);
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
 }
 
-.smoke-trail {
-  width: 350px;
-  height: 60px;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
-  border-radius: 50px;
-  margin-right: -30px;
-  filter: blur(8px);
+.smoke-container {
+  position: absolute;
+  right: 130px;
+  display: flex;
+  align-items: center;
+}
+
+.smoke-puff {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  filter: blur(10px);
+  animation: puffExpand 1.5s forwards;
+}
+
+@keyframes puffExpand {
+  0% { width: 20px; height: 20px; opacity: 0.9; transform: scale(1); }
+  100% { width: 120px; height: 120px; opacity: 0.4; transform: scale(3) translateX(-50px); }
 }
 
 .smoke-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(255, 255, 255, 0);
   z-index: 2000;
   pointer-events: none;
   transition: background 2s ease-in-out;
 }
 
-.smoke-overlay.active {
-  background: rgba(255, 255, 255, 1);
-}
+.smoke-overlay.active { background: rgba(255, 255, 255, 1); }
 
 /* MESSAGE FINAL */
 .final-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  background: #ffffff;
+  display: flex; justify-content: center; align-items: center; height: 100%; background: #ffffff;
 }
 
 .love-message {
-  font-size: 2.8rem;
-  color: #ff416c;
-  text-align: center;
-  font-weight: bold;
-  text-shadow: 0 4px 20px rgba(255, 65, 108, 0.2);
+  font-size: 2.8rem; color: #ff416c; text-align: center; font-weight: bold;
 }
