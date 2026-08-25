@@ -1,5 +1,5 @@
-// Ton prénom et celui de Naelle
-const monPrenom = "wael"; // 
+// Wael et celui de Naelle
+const monPrenom = "Wael"; // 
 const nomNaelle = "Naelle";
 
 // Coordonnées : Tanger et Paris (France)
@@ -88,7 +88,7 @@ function goToNextScreen(screenId) {
   document.getElementById(screenId).classList.add('active');
 }
 
-// Cadenas & Avion
+// Déclenchement d'erreur de la porte
 function triggerLockError() {
   const errorMsg = document.getElementById('error-message');
   errorMsg.classList.remove('hidden');
@@ -98,24 +98,26 @@ function triggerLockError() {
   }, 2500);
 }
 
+// Animation de l'Avion Géant et de la fumée du réacteur
 function launchPlaneAnimation() {
-  const plane = document.getElementById('plane');
+  const planeWrapper = document.getElementById('plane-wrapper');
   const smoke = document.getElementById('smoke-overlay');
 
-  plane.style.display = 'block';
+  planeWrapper.style.display = 'flex';
   
-  let pos = -60;
+  let pos = -350;
   const planeInterval = setInterval(() => {
-    pos += 12;
-    plane.style.left = pos + 'px';
+    pos += 14;
+    planeWrapper.style.left = pos + 'px';
 
-    if (pos > window.innerWidth / 3) {
+    // Remplissage progressif de l'écran par la fumée
+    if (pos > window.innerWidth / 4) {
       smoke.classList.add('active');
     }
 
-    if (pos > window.innerWidth + 80) {
+    if (pos > window.innerWidth + 200) {
       clearInterval(planeInterval);
-      plane.style.display = 'none';
+      planeWrapper.style.display = 'none';
       
       setTimeout(() => {
         goToNextScreen('screen-final');
