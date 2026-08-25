@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deux villes, une histoire ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+  <!-- ÉCRAN 1 : LA CARTE -->
+  <section id="screen-map" class="screen active">
+    <div id="map"></div>
+
+    <div class="overlay-content">
+      <div id="quote-1" class="text-fade">« Peu importe la distance… »</div>
+      <div id="quote-2" class="text-fade">« …il y avait toujours un chemin entre nous. ❤️ »</div>
+      
+      <div id="poem" class="text-fade">
+        <p>Deux villes.</p>
+        <p>Deux vies.</p>
+        <p>Une histoire.</p>
+      </div>
+
+      <button id="next-btn" class="hidden" onclick="goToNextScreen()">CONTINUER NOTRE VOYAGE →</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 2 : LA CONVERSATION (Exemple pour la suite) -->
+  <section id="screen-story" class="screen">
+    <div class="story-container">
+      <h2>Une conversation 💬</h2>
+      <p class="final-poem">
+        Entre Tanger et ta ville, s’étendent des kilomètres,<br>
+        comme une frontière dessinée entre deux horizons.<br>
+        Deux villes, deux chemins, deux vies qui semblaient destinées à ne jamais se rencontrer.<br><br>
+        Et pourtant, au détour d’un message, d’un regard derrière un écran,<br>
+        nos trajectoires se sont entremêlées.<br><br>
+        Depuis, la distance n’est plus seulement une mesure :<br>
+        elle est devenue l’attente d’un jour à venir.<br><br>
+        Un jour où les kilomètres s’effaceront,<br>
+        où les écrans deviendront inutiles,<br>
+        où deux chemins, après s’être longtemps cherchés,<br>
+        se rejoindront enfin.<br><br>
+        Alors, au cœur de cette carte,<br>
+        il n’y aura plus de distance à parcourir,<br>
+        seulement une histoire à continuer. ❤️
+      </p>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
