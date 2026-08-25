@@ -90,7 +90,7 @@ body, html {
 #next-btn.hidden { opacity: 0; pointer-events: none; }
 #next-btn:hover, .suite-btn:hover { transform: scale(1.05); }
 
-/* MOTIFS MIGNONS 100% CLAIRS (OPACITÉ 1) */
+/* MULTITUDE DE MOTIFS ULTRA CLAIRS ET LUMINEUX */
 .cute-decorations {
   position: absolute;
   width: 100%;
@@ -101,23 +101,36 @@ body, html {
 
 .decor {
   position: absolute;
-  font-size: 2.2rem;
-  opacity: 1; /* Motifs totalement clairs et nets */
-  animation: float 4s ease-in-out infinite alternate;
+  font-size: 2.5rem;
+  opacity: 1 !important; /* Opacité maximale */
+  filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8)) drop-shadow(0 0 4px #ff416c);
+  animation: float 3.5s ease-in-out infinite alternate;
 }
 
-.d1 { top: 8%; left: 8%; }
-.d2 { top: 12%; right: 10%; animation-delay: 0.5s; }
-.d3 { bottom: 12%; left: 10%; animation-delay: 1s; }
-.d4 { bottom: 15%; right: 8%; animation-delay: 1.5s; }
-.d5 { top: 45%; left: 5%; animation-delay: 0.8s; }
-.d6 { top: 50%; right: 5%; animation-delay: 1.2s; }
-.d7 { top: 82%; left: 45%; animation-delay: 0.3s; }
-.d8 { top: 5%; left: 48%; animation-delay: 1.7s; }
+/* Positionnement des 16 motifs aux quatre coins */
+.d1  { top: 5%; left: 5%; }
+.d2  { top: 6%; right: 6%; animation-delay: 0.4s; }
+.d3  { bottom: 6%; left: 6%; animation-delay: 0.8s; }
+.d4  { bottom: 5%; right: 5%; animation-delay: 1.2s; }
+
+.d5  { top: 30%; left: 3%; animation-delay: 0.6s; }
+.d6  { top: 35%; right: 4%; animation-delay: 1.4s; }
+.d7  { bottom: 30%; left: 4%; animation-delay: 0.2s; }
+.d8  { bottom: 35%; right: 3%; animation-delay: 1.0s; }
+
+.d9  { top: 3%; left: 35%; animation-delay: 1.6s; }
+.d10 { top: 4%; right: 35%; animation-delay: 0.5s; }
+.d11 { bottom: 3%; left: 35%; animation-delay: 1.1s; }
+.d12 { bottom: 4%; right: 35%; animation-delay: 0.7s; }
+
+.d13 { top: 65%; left: 2%; animation-delay: 1.3s; }
+.d14 { top: 65%; right: 2%; animation-delay: 0.9s; }
+.d15 { top: 18%; left: 8%; animation-delay: 0.3s; }
+.d16 { top: 18%; right: 8%; animation-delay: 1.5s; }
 
 @keyframes float {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-15px) rotate(10deg); }
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  100% { transform: translateY(-18px) scale(1.15) rotate(12deg); }
 }
 
 .story-container {
@@ -130,13 +143,14 @@ body, html {
   height: 100%;
   padding: 20px;
   text-align: center;
-  background: rgba(248, 249, 250, 0.85);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
 }
 
 .story-container h2 { font-size: 1.5rem; margin-bottom: 15px; color: #ff416c; }
-.final-poem { max-width: 550px; line-height: 1.5; font-size: 0.85rem !important; color: #34495e; }
+.final-poem { max-width: 550px; line-height: 1.5; font-size: 0.85rem !important; color: #34495e; font-weight: 600; }
 
-/* PORTE CLASSIQUE D'ORIGINE */
+/* PORTE CLASSIQUE */
 .lock-container {
   display: flex;
   flex-direction: column;
