@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deux villes, une histoire ❤️</title>
-  <!-- Force le rafraîchissement du style avec ?v=3 -->
-  <link rel="stylesheet" href="style.css?v=3">
+  <!-- Versioning pour rafraîchir le cache -->
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
@@ -52,20 +52,27 @@
     </div>
   </section>
 
-  <!-- ÉCRAN 3 : LE CADENAS -->
+  <!-- ÉCRAN 3 : LA PORTE CADENASSÉE AVEC CHAÎNES -->
   <section id="screen-lock" class="screen">
     <div class="lock-container">
-      <div id="padlock" class="padlock-icon" onclick="triggerLockError()">🔒</div>
+      <div id="padlock" class="door-lock-wrapper" onclick="triggerLockError()">
+        <span class="door">🚪</span>
+        <span class="chains">⛓️</span>
+        <span class="lock">🔒</span>
+      </div>
       <button class="click-here-btn" onclick="triggerLockError()">Clique ici</button>
       <div id="error-message" class="error-popup hidden">
-        ⚠️ Ce cadenas ne pourra s'ouvrir que quand nous aurons pris notre première photo ensemble.
+        ⚠️ Cette porte ne pourra s'ouvrir que quand nous aurons pris notre première photo ensemble.
       </div>
     </div>
   </section>
 
-  <!-- ÉCRAN 4 : L'AVION ET LA FUMÉE -->
+  <!-- ÉCRAN 4 : L'AVION GÉANT ET LA FUMÉE DE RÉACTEUR -->
   <div id="smoke-overlay" class="smoke-overlay"></div>
-  <div id="plane" class="plane-icon">✈️</div>
+  <div id="plane-wrapper" class="plane-wrapper">
+    <div class="smoke-trail"></div>
+    <div class="plane-icon">✈️</div>
+  </div>
 
   <!-- ÉCRAN FINAL : MESSAGE D'AMOUR -->
   <section id="screen-final" class="screen">
@@ -75,7 +82,6 @@
   </section>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- Force le rafraîchissement du script avec ?v=3 -->
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
