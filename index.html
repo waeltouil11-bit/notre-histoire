@@ -4,30 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deux villes, une histoire ❤️</title>
-  <link rel="stylesheet" href="style.css?v=200">
+  <link rel="stylesheet" href="style.css?v=300">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
-  <!-- ÉCRAN 1 : LA CARTE -->
+  <!-- ÉCRAN 1 : CARTE -->
   <section id="screen-map" class="screen active">
     <div id="map"></div>
-
     <div class="overlay-content">
       <div id="quote-1" class="text-fade">« Peu importe la distance… »</div>
       <div id="quote-2" class="text-fade">« …il y avait toujours un chemin entre nous. ❤️ »</div>
-      
       <div id="poem" class="text-fade">
         <p>Deux villes.</p>
         <p>Deux vies.</p>
         <p>Une histoire.</p>
       </div>
-
       <button id="next-btn" class="hidden" onclick="goToNextScreen('screen-story')">CONTINUER NOTRE VOYAGE →</button>
     </div>
   </section>
 
-  <!-- ÉCRAN 2 : LE POÈME AVEC MOTIFS MIGNONS -->
+  <!-- ÉCRAN 2 : POÈME ET MOTIFS CLAIRS -->
   <section id="screen-story" class="screen">
     <div class="cute-decorations">
       <span class="decor d1">🐱</span>
@@ -61,18 +58,21 @@
     </div>
   </section>
 
-  <!-- ÉCRAN 3 : PORTE REALISTE AVEC CHAÎNES ET CADENAS -->
+  <!-- ÉCRAN 3 : PORTE HYPER-RÉALISTE -->
   <section id="screen-lock" class="screen">
     <div class="lock-container">
       <div class="realistic-door-wrapper" onclick="triggerLockError()">
         <div class="door-frame">
-          <div class="door-panel left-door"></div>
-          <div class="door-panel right-door"></div>
-          <!-- Chaînes croisées -->
+          <div class="door-panel left-door">
+            <div class="wood-pattern"></div>
+            <div class="door-knob"></div>
+          </div>
+          <div class="door-panel right-door">
+            <div class="wood-pattern"></div>
+          </div>
           <div class="chain chain-1"></div>
           <div class="chain chain-2"></div>
-          <!-- Cadenas Métallique -->
-          <div class="heavy-padlock">
+          <div class="steel-padlock">
             <div class="shackle"></div>
             <div class="lock-body">🔒</div>
           </div>
@@ -85,15 +85,11 @@
     </div>
   </section>
 
-  <!-- ÉCRAN 4 : AVION RÉALISTE ET FUMÉE -->
+  <!-- ÉCRAN 4 : AVION ET FUMÉE -->
   <div id="smoke-overlay" class="smoke-overlay"></div>
   <div id="plane-wrapper" class="plane-wrapper">
-    <div id="smoke-container" class="smoke-container"></div>
-    <div class="real-airplane">
-      <svg viewBox="0 0 512 512" width="160" height="160">
-        <path fill="#ffffff" d="M493.3,212.1L384,180.7V42.7c0-23.5-19.2-42.7-42.7-42.7s-42.7,19.2-42.7,42.7v103.5L138.7,98.7c-9.2-2.7-18.9,0-25.2,7.1l-28.4,32.2c-7.5,8.5-6.7,21.4,1.8,28.9l121.2,106.8l-87.7,18.7l-48.4-38.7c-6.1-4.9-14.5-6.1-21.7-3.1L7.5,268.1c-9.1,3.8-12.2,14.9-6.3,22.2l53.9,66.6c4.9,6.1,12.7,9.2,20.4,8.1l111.4-16.7l87,76.5v44.5c0,23.5,19.2,42.7,42.7,42.7s42.7-19.2,42.7-42.7V395l133.6,11.7c8.5,0.7,16.5-4.2,19.9-12.1l18.4-42.9c4.2-9.7,0.4-21-8.7-26.2L384,284.4l109.3-31.2C507.2,249,514.8,231.2,493.3,212.1z" />
-      </svg>
-    </div>
+    <div class="smoke-trail"></div>
+    <div class="plane-icon">✈️</div>
   </div>
 
   <!-- ÉCRAN FINAL -->
@@ -104,6 +100,6 @@
   </section>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="script.js?v=200"></script>
+  <script src="script.js?v=300"></script>
 </body>
 </html>
