@@ -155,7 +155,7 @@ body, html {
 }
 
 .door-lock-wrapper .door {
-  font-size: 110px;
+  font-size: 120px;
   display: block;
 }
 
@@ -164,16 +164,16 @@ body, html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-15deg);
-  font-size: 75px;
+  font-size: 85px;
   opacity: 0.9;
   pointer-events: none;
 }
 
 .door-lock-wrapper .lock {
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
   right: 5px;
-  font-size: 45px;
+  font-size: 50px;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
   pointer-events: none;
 }
@@ -222,7 +222,7 @@ body, html {
 .plane-wrapper {
   position: absolute;
   top: 50%;
-  left: -350px;
+  left: -400px;
   transform: translateY(-50%);
   display: none;
   align-items: center;
@@ -231,18 +231,17 @@ body, html {
 }
 
 .plane-icon {
-  font-size: 120px; /* Avion très agrandi */
+  font-size: 130px; /* Grand Avion */
   transform: rotate(10deg);
   filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
 }
 
-/* Traînée de fumée sortant directement de l'arrière de l'avion */
 .smoke-trail {
-  width: 300px;
-  height: 45px;
+  width: 350px;
+  height: 60px;
   background: linear-gradient(to left, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
   border-radius: 50px;
-  margin-right: -25px;
+  margin-right: -30px;
   filter: blur(8px);
 }
 
