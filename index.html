@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deux villes, une histoire ❤️</title>
-  <link rel="stylesheet" href="style.css?v=300">
+  <link rel="stylesheet" href="style.css?v=400">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
-  <!-- ÉCRAN 1 : CARTE -->
   <section id="screen-map" class="screen active">
     <div id="map"></div>
     <div class="overlay-content">
@@ -24,7 +23,6 @@
     </div>
   </section>
 
-  <!-- ÉCRAN 2 : POÈME ET MOTIFS CLAIRS -->
   <section id="screen-story" class="screen">
     <div class="cute-decorations">
       <span class="decor d1">🐱</span>
@@ -58,25 +56,12 @@
     </div>
   </section>
 
-  <!-- ÉCRAN 3 : PORTE HYPER-RÉALISTE -->
   <section id="screen-lock" class="screen">
     <div class="lock-container">
-      <div class="realistic-door-wrapper" onclick="triggerLockError()">
-        <div class="door-frame">
-          <div class="door-panel left-door">
-            <div class="wood-pattern"></div>
-            <div class="door-knob"></div>
-          </div>
-          <div class="door-panel right-door">
-            <div class="wood-pattern"></div>
-          </div>
-          <div class="chain chain-1"></div>
-          <div class="chain chain-2"></div>
-          <div class="steel-padlock">
-            <div class="shackle"></div>
-            <div class="lock-body">🔒</div>
-          </div>
-        </div>
+      <div id="padlock" class="door-lock-wrapper" onclick="triggerLockError()">
+        <span class="door">🚪</span>
+        <span class="chains">⛓️</span>
+        <span class="lock">🔒</span>
       </div>
       <button class="click-here-btn" onclick="triggerLockError()">Clique ici</button>
       <div id="error-message" class="error-popup hidden">
@@ -85,14 +70,12 @@
     </div>
   </section>
 
-  <!-- ÉCRAN 4 : AVION ET FUMÉE -->
   <div id="smoke-overlay" class="smoke-overlay"></div>
   <div id="plane-wrapper" class="plane-wrapper">
     <div class="smoke-trail"></div>
     <div class="plane-icon">✈️</div>
   </div>
 
-  <!-- ÉCRAN FINAL -->
   <section id="screen-final" class="screen">
     <div class="final-container">
       <h1 class="love-message">Je t'aime ma Naelle ❤️</h1>
@@ -100,6 +83,6 @@
   </section>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="script.js?v=300"></script>
+  <script src="script.js?v=400"></script>
 </body>
 </html>
