@@ -33,7 +33,6 @@ body, html {
   filter: brightness(1);
 }
 
-/* Style des prénoms sur les points */
 .custom-name-label {
   background: rgba(255, 255, 255, 0.95);
   border: 1.5px solid #ff416c;
@@ -78,7 +77,6 @@ body, html {
   transform: translateY(0);
 }
 
-/* Boutons principaux */
 #next-btn, .suite-btn {
   pointer-events: auto;
   background: linear-gradient(45deg, #ff4b2b, #ff416c);
@@ -106,7 +104,7 @@ body, html {
   transform: scale(1.05);
 }
 
-/* ÉCRAN 2 : POÈME RÉDUIT ET TRÈS COMPACT */
+/* ÉCRAN 2 : POÈME COMPACT */
 .story-container {
   display: flex;
   flex-direction: column;
@@ -127,11 +125,11 @@ body, html {
 .final-poem {
   max-width: 550px;
   line-height: 1.5;
-  font-size: 0.85rem !important; /* TEXTE RÉTÉRECI ET COMPACT */
+  font-size: 0.85rem !important;
   color: #34495e;
 }
 
-/* ÉCRAN 3 : CADENAS */
+/* ÉCRAN 3 : PORTE VERROUILLÉE PAR DES CHAÎNES ET UN CADENAS */
 .lock-container {
   display: flex;
   flex-direction: column;
@@ -144,23 +142,48 @@ body, html {
   text-align: center;
 }
 
-.padlock-icon {
-  font-size: 70px;
+.door-lock-wrapper {
+  position: relative;
+  display: inline-block;
   cursor: pointer;
-  margin-bottom: 15px;
-  transition: transform 0.2s ease;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
 }
 
-.padlock-icon:hover {
-  transform: scale(1.1);
+.door-lock-wrapper:hover {
+  transform: scale(1.08);
+}
+
+.door-lock-wrapper .door {
+  font-size: 110px;
+  display: block;
+}
+
+.door-lock-wrapper .chains {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 75px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.door-lock-wrapper .lock {
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
+  font-size: 45px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
+  pointer-events: none;
 }
 
 .click-here-btn {
   background: transparent;
   border: 2px solid #ff416c;
   color: #ff416c;
-  padding: 8px 20px;
-  font-size: 0.9rem;
+  padding: 10px 24px;
+  font-size: 0.95rem;
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
@@ -195,16 +218,32 @@ body, html {
   40%, 80% { transform: translateX(10px); }
 }
 
-/* AVION ET FUMÉE */
-.plane-icon {
+/* ÉCRAN 4 : AVION GÉANT & FUMÉE DE RÉACTEUR */
+.plane-wrapper {
   position: absolute;
-  font-size: 45px;
   top: 50%;
-  left: -60px;
+  left: -350px;
+  transform: translateY(-50%);
+  display: none;
+  align-items: center;
   z-index: 3000;
   pointer-events: none;
-  display: none;
-  transform: translateY(-50%) rotate(15deg);
+}
+
+.plane-icon {
+  font-size: 120px; /* Avion très agrandi */
+  transform: rotate(10deg);
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+}
+
+/* Traînée de fumée sortant directement de l'arrière de l'avion */
+.smoke-trail {
+  width: 300px;
+  height: 45px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+  border-radius: 50px;
+  margin-right: -25px;
+  filter: blur(8px);
 }
 
 .smoke-overlay {
@@ -216,7 +255,7 @@ body, html {
   background: rgba(255, 255, 255, 0);
   z-index: 2000;
   pointer-events: none;
-  transition: background 1.8s ease-in-out;
+  transition: background 2s ease-in-out;
 }
 
 .smoke-overlay.active {
@@ -233,7 +272,7 @@ body, html {
 }
 
 .love-message {
-  font-size: 2.3rem;
+  font-size: 2.8rem;
   color: #ff416c;
   text-align: center;
   font-weight: bold;
