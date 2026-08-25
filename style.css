@@ -1,120 +1,263 @@
-/* PORTE ULTRA-RÉALISTE 3D */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Georgia', serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  color: #2c3e50;
+}
+
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.screen.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-name-label {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #ff416c;
+  color: #1a1a2e;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  white-space: nowrap;
+}
+
+.overlay-content {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1000;
+  width: 85%;
+  max-width: 600px;
+  pointer-events: none;
+}
+
+.text-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1a1a2e;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+.text-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#next-btn, .suite-btn {
+  pointer-events: auto;
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+  transition: transform 0.3s;
+}
+
+.suite-btn { margin-top: 20px; }
+#next-btn.hidden { opacity: 0; pointer-events: none; }
+#next-btn:hover, .suite-btn:hover { transform: scale(1.05); }
+
+/* MOTIFS MIGNONS 100% CLAIRS (OPACITÉ 1) */
+.cute-decorations {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decor {
+  position: absolute;
+  font-size: 2.2rem;
+  opacity: 1; /* Motifs totalement clairs et nets */
+  animation: float 4s ease-in-out infinite alternate;
+}
+
+.d1 { top: 8%; left: 8%; }
+.d2 { top: 12%; right: 10%; animation-delay: 0.5s; }
+.d3 { bottom: 12%; left: 10%; animation-delay: 1s; }
+.d4 { bottom: 15%; right: 8%; animation-delay: 1.5s; }
+.d5 { top: 45%; left: 5%; animation-delay: 0.8s; }
+.d6 { top: 50%; right: 5%; animation-delay: 1.2s; }
+.d7 { top: 82%; left: 45%; animation-delay: 0.3s; }
+.d8 { top: 5%; left: 48%; animation-delay: 1.7s; }
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(10deg); }
+}
+
+.story-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+  background: rgba(248, 249, 250, 0.85);
+}
+
+.story-container h2 { font-size: 1.5rem; margin-bottom: 15px; color: #ff416c; }
+.final-poem { max-width: 550px; line-height: 1.5; font-size: 0.85rem !important; color: #34495e; }
+
+/* PORTE CLASSIQUE D'ORIGINE */
 .lock-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: radial-gradient(circle, #1a1c29 0%, #050608 100%);
+  background: #111425;
   color: white;
   padding: 20px;
+  text-align: center;
 }
 
-.realistic-door-wrapper {
+.door-lock-wrapper {
   position: relative;
-  width: 220px;
-  height: 330px;
+  display: inline-block;
   cursor: pointer;
   margin-bottom: 25px;
-  perspective: 800px;
+  transition: transform 0.3s ease;
 }
 
-/* Cadre en pierre / métal lourd */
-.door-frame {
-  width: 100%;
-  height: 100%;
-  background: #110b07;
-  border: 12px solid #2b1a0d;
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.9),
-    inset 0 0 25px rgba(0, 0, 0, 0.9);
-  position: relative;
-  display: flex;
-  overflow: hidden;
+.door-lock-wrapper:hover {
+  transform: scale(1.08);
 }
 
-/* Lames de bois verticales sculptées */
-.door-panel {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    #2b180a 0px,
-    #4a2c16 12px,
-    #361f0e 24px,
-    #1f1006 35px
-  );
-  border-right: 2px solid #0d0603;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+.door-lock-wrapper .door {
+  font-size: 120px;
+  display: block;
 }
 
-/* Renforts en fer forgé (Pentures) */
-.door-panel::before, .door-panel::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 14px;
-  background: linear-gradient(180deg, #444, #111, #222);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.7);
-  border-radius: 2px;
-}
-
-.door-panel::before { top: 20%; }
-.door-panel::after { bottom: 20%; }
-
-/* Poignée en bronze antique */
-.door-knob {
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  width: 16px;
-  height: 35px;
-  background: linear-gradient(180deg, #d4af37, #5a450c);
-  border-radius: 4px;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.9);
-}
-
-/* Chaînes lourdes en acier 3D */
-.chain {
-  position: absolute;
-  top: 50%;
-  left: -25%;
-  width: 150%;
-  height: 26px;
-  background: repeating-linear-gradient(
-    90deg,
-    #111 0px,
-    #777 4px,
-    #eee 10px,
-    #444 16px,
-    #111 22px
-  );
-  border-radius: 13px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.95);
-  z-index: 10;
-}
-
-.chain-1 { transform: translateY(-50%) rotate(-20deg); }
-.chain-2 { transform: translateY(-50%) rotate(20deg); }
-
-/* Cadenas massif en acier renforcé */
-.steel-padlock {
+.door-lock-wrapper .chains {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 4.5rem;
-  z-index: 20;
-  filter: drop-shadow(0 15px 25px rgba(0,0,0,1));
-  animation: lockShake 3s infinite ease-in-out;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 85px;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
-@keyframes lockShake {
-  0%, 90%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-  93% { transform: translate(-50%, -50%) rotate(-5deg); }
-  96% { transform: translate(-50%, -50%) rotate(5deg); }
+.door-lock-wrapper .lock {
+  position: absolute;
+  bottom: 20px;
+  right: 5px;
+  font-size: 50px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
+  pointer-events: none;
+}
+
+.click-here-btn {
+  background: transparent;
+  border: 2px solid #ff416c;
+  color: #ff416c;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.error-popup {
+  margin-top: 20px;
+  background: rgba(255, 65, 108, 0.15);
+  border: 1px solid #ff416c;
+  color: #ff6b81;
+  padding: 12px 18px;
+  border-radius: 12px;
+  max-width: 380px;
+  font-size: 0.85rem;
+  animation: shake 0.4s ease-in-out;
+}
+
+.error-popup.hidden { display: none; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+
+/* AVION ET FUMÉE D'ORIGINE */
+.plane-wrapper {
+  position: absolute;
+  top: 50%;
+  left: -400px;
+  transform: translateY(-50%);
+  display: none;
+  align-items: center;
+  z-index: 3000;
+  pointer-events: none;
+}
+
+.plane-icon {
+  font-size: 130px;
+  transform: rotate(10deg);
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+}
+
+.smoke-trail {
+  width: 350px;
+  height: 60px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+  border-radius: 50px;
+  margin-right: -30px;
+  filter: blur(8px);
+}
+
+.smoke-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0);
+  z-index: 2000;
+  pointer-events: none;
+  transition: background 2s ease-in-out;
+}
+
+.smoke-overlay.active { background: rgba(255, 255, 255, 1); }
+
+.final-container {
+  display: flex; justify-content: center; align-items: center; height: 100%; background: #ffffff;
+}
+
+.love-message {
+  font-size: 2.8rem; color: #ff416c; text-align: center; font-weight: bold;
 }
