@@ -23,14 +23,14 @@
         <p>Une histoire.</p>
       </div>
 
-      <button id="next-btn" class="hidden" onclick="goToNextScreen()">CONTINUER NOTRE VOYAGE →</button>
+      <button id="next-btn" class="hidden" onclick="goToNextScreen('screen-story')">CONTINUER NOTRE VOYAGE →</button>
     </div>
   </section>
 
-  <!-- ÉCRAN 2 : LA CONVERSATION -->
+  <!-- ÉCRAN 2 : LE POÈME -->
   <section id="screen-story" class="screen">
     <div class="story-container">
-      <h2>Une conversation 💬</h2>
+      <h2>Notre Histoire 💬</h2>
       <p class="final-poem">
         Entre Tanger et ta ville, s’étendent des kilomètres,<br>
         comme une frontière dessinée entre deux horizons.<br>
@@ -38,7 +38,7 @@
         Et pourtant, au détour d’un message, d’un regard derrière un écran,<br>
         nos trajectoires se sont entremêlées.<br><br>
         Depuis, la distance n’est plus seulement une mesure :<br>
-        elle me pousse vers l’attente d’un jour à venir.<br><br>
+        elle est devenue l’attente d’un jour à venir.<br><br>
         Un jour où les kilomètres s’effaceront,<br>
         où les écrans deviendront inutiles,<br>
         où deux chemins, après s’être longtemps cherchés,<br>
@@ -47,6 +47,29 @@
         il n’y aura plus de distance à parcourir,<br>
         seulement une histoire à continuer. ❤️
       </p>
+      <button class="suite-btn" onclick="goToNextScreen('screen-lock')">SUITE →</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 3 : LE CADENAS -->
+  <section id="screen-lock" class="screen">
+    <div class="lock-container">
+      <div id="padlock" class="padlock-icon" onclick="triggerLockError()">🔒</div>
+      <button class="click-here-btn" onclick="triggerLockError()">Clique ici</button>
+      <div id="error-message" class="error-popup hidden">
+        ⚠️ Ce cadenas ne pourra s'ouvrir que quand nous aurons pris notre première photo ensemble.
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉCRAN 4 : L'AVION ET LA FUMÉE -->
+  <div id="smoke-overlay" class="smoke-overlay"></div>
+  <div id="plane" class="plane-icon">✈️</div>
+
+  <!-- ÉCRAN FINAL : MESSAGE D'AMOUR -->
+  <section id="screen-final" class="screen">
+    <div class="final-container">
+      <h1 class="love-message">Je t'aime ma Naelle ❤️</h1>
     </div>
   </section>
 
