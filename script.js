@@ -1,8 +1,7 @@
 // Coordonnées : Tanger et Sa Ville (ex: Paris [48.8566, 2.3522])
 const tangerCoords = [35.7595, -5.8340];
 const targetCoords = [46.232193, 2.209667]; // 
-
-// Initialisation de la carte sombre (CartoDB Dark Matter)
+// Initialisation de la carte clair (CartoDB Voyager)
 const map = L.map('map', { zoomControl: false }).setView([42, -1], 5);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
   maxZoom: 19,
@@ -11,7 +10,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
 
 // Icône de cœur
 const heartIcon = L.divIcon({
-  html: '<div style="font-size:24px;">❤️</div>',
+  html: '<div style="font-size:28px;">❤️</div>',
   className: 'heart-marker',
   iconSize: [30, 30],
   iconAnchor: [15, 15]
@@ -20,18 +19,18 @@ const heartIcon = L.divIcon({
 // Animation principale
 setTimeout(() => {
   // 1. Apparition des points
-  const tangerMarker = L.circleMarker(tangerCoords, { color: '#ff416c', radius: 8 }).addTo(map).bindPopup('Tanger (Là où je suis)').openPopup();
-  const targetMarker = L.circleMarker(targetCoords, { color: '#ff416c', radius: 8 }).addTo(map).bindPopup('Sa Ville (Là où elle est)');
+  const tangerMarker = L.circleMarker(tangerCoords, { color: '#ff416c', fillColor: '#ff416c', fillOpacity: 0.8, radius: 8 }).addTo(map).bindPopup('Tanger (Là où je suis)').openPopup();
+  const targetMarker = L.circleMarker(targetCoords, { color: '#ff416c', fillColor: '#ff416c', fillOpacity: 0.8, radius: 8 }).addTo(map).bindPopup('Sa Ville (Là où elle est)');
 
   // 2. Point de rencontre symbolique au milieu
   const midLat = (tangerCoords[0] + targetCoords[0]) / 2;
   const midLng = (tangerCoords[1] + targetCoords[1]) / 2;
   const midCoords = [midLat, midLng];
 
-  // 3. Tracé des lignes progressive
+  // 3. Tracé des lignes progressif
   let progress = 0;
-  const polyline1 = L.polyline([], { color: '#ff416c', weight: 3, opacity: 0.8 }).addTo(map);
-  const polyline2 = L.polyline([], { color: '#ff416c', weight: 3, opacity: 0.8 }).addTo(map);
+  const polyline1 = L.polyline([], { color: '#ff416c', weight: 4, opacity: 0.9 }).addTo(map);
+  const polyline2 = L.polyline([], { color: '#ff416c', weight: 4, opacity: 0.9 }).addTo(map);
 
   const interval = setInterval(() => {
     progress += 0.02;
