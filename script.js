@@ -4,8 +4,9 @@ const targetCoords = [46.232193, 2.209667]; //
 
 // Initialisation de la carte sombre (CartoDB Dark Matter)
 const map = L.map('map', { zoomControl: false }).setView([42, -1], 5);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  maxZoom: 19
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  maxZoom: 19,
+  attribution: '© OpenStreetMap'
 }).addTo(map);
 
 // Icône de cœur
