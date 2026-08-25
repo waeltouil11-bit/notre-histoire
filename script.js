@@ -1,8 +1,8 @@
-// Wael et celui de Naelle
-const monPrenom = "Wael"; // 
+// Ton prénom et celui de Naelle
+const monPrenom = "Wael"; // 👈 Prénom mis à jour !
 const nomNaelle = "Naelle";
 
-// Coordonnées : Tanger et Paris (France)
+// Coordonnées : Tanger et France
 const tangerCoords = [35.7595, -5.8340];
 const targetCoords = [48.8566, 2.3522];
 
@@ -105,12 +105,11 @@ function launchPlaneAnimation() {
 
   planeWrapper.style.display = 'flex';
   
-  let pos = -350;
+  let pos = -400;
   const planeInterval = setInterval(() => {
     pos += 14;
     planeWrapper.style.left = pos + 'px';
 
-    // Remplissage progressif de l'écran par la fumée
     if (pos > window.innerWidth / 4) {
       smoke.classList.add('active');
     }
