@@ -44,9 +44,11 @@ setTimeout(() => {
 
 }, 1000);
 
-// Dessin et Remplissage du Cœur
+// Cœur d'origine fluide et complet
 function drawHeartShape() {
-  const heartPoints = [];
+  const leftHeartLine = L.polyline([], { color: '#ff1493', weight: 4, opacity: 0.95 }).addTo(map);
+  const rightHeartLine = L.polyline([], { color: '#ff1493', weight: 4, opacity: 0.95 }).addTo(map);
+
   let step = 0;
   const totalSteps = 100;
   const scaleLat = 1.8;
@@ -56,22 +58,16 @@ function drawHeartShape() {
     step++;
     const t = (step / totalSteps) * Math.PI;
 
-    const x = 16 * Math.pow(Math.sin(t), 3);
-    const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+    const xLeft = -16 * Math.pow(Math.sin(t), 3);
+    const yLeft = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+    leftHeartLine.addLatLng([midLat + (yLeft / 16) * scaleLat, midLng + (xLeft / 16) * scaleLng]);
 
-    heartPoints.push([midLat + (y / 16) * scaleLat, midLng + (x / 16) * scaleLng]);
+    const xRight = 16 * Math.pow(Math.sin(t), 3);
+    const yRight = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+    rightHeartLine.addLatLng([midLat + (yRight / 16) * scaleLat, midLng + (xRight / 16) * scaleLng]);
 
     if (step >= totalSteps) {
       clearInterval(heartInterval);
-      
-      // Tracer le polygone coloré rempli de rouge
-      L.polygon(heartPoints, {
-        color: '#ff1493',
-        fillColor: '#ff416c',
-        fillOpacity: 0.6,
-        weight: 3
-      }).addTo(map);
-
       map.flyTo([midLat - 0.5, midLng], 6, { duration: 2.5 });
 
       setTimeout(() => document.getElementById('quote-1').classList.add('visible'), 1200);
@@ -96,29 +92,19 @@ function triggerLockError() {
   }, 2500);
 }
 
-// Animation Réaliste de l'Avion et de la Fumée
 function launchPlaneAnimation() {
   const planeWrapper = document.getElementById('plane-wrapper');
-  const smokeOverlay = document.getElementById('smoke-overlay');
-  const smokeContainer = document.getElementById('smoke-container');
+  const smoke = document.getElementById('smoke-overlay');
 
   planeWrapper.style.display = 'flex';
   
-  let pos = -250;
+  let pos = -400;
   const planeInterval = setInterval(() => {
-    pos += 12;
+    pos += 14;
     planeWrapper.style.left = pos + 'px';
 
-    // Génération continue de puffs de fumée réels
-    const puff = document.createElement('div');
-    puff.className = 'smoke-puff';
-    puff.style.top = (Math.random() * 20 - 10) + 'px';
-    smokeContainer.appendChild(puff);
-
-    setTimeout(() => puff.remove(), 1500);
-
-    if (pos > window.innerWidth / 3) {
-      smokeOverlay.classList.add('active');
+    if (pos > window.innerWidth / 4) {
+      smoke.classList.add('active');
     }
 
     if (pos > window.innerWidth + 200) {
@@ -127,7 +113,7 @@ function launchPlaneAnimation() {
       
       setTimeout(() => {
         goToNextScreen('screen-final');
-        smokeOverlay.classList.remove('active');
+        smoke.classList.remove('active');
       }, 500);
     }
   }, 20);
